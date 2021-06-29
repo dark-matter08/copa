@@ -5,17 +5,46 @@ from kivymd.uix.button import MDRaisedButton, MDFlatButton
 
 def db_connector():
     try:
+        # try connecting to remote db
+        print("Trying online servers...")
         con = mysql.connector.connect(
-        user = "root",
-        password = "",
-        host = "localhost",
-        database = "copa"
+        user = "ndelgiyy_copa",
+        password = "Nixo2018",
+        host = "premium154.web-hosting.com",
+        port = 3306,
+        database = "ndelgiyy_copa"
         )
         cur = con.cursor()
+
+        print("===================")
+        print("Online DB Connected")
+        print("===================")
+
     except Exception as e:
-        show_alert_dialog("No connection!")
-        cur = ""
-        con = ""
+        print(e)
+        # try connecting to local db
+        # ssh key password: ~41Kt5D^XRs@
+        print("Trying offline servers...")
+        try:
+            con = mysql.connector.connect(
+            user = "root",
+            password = "",
+            host = "localhost",
+            database = "copa"
+            )
+            cur = con.cursor()
+            print("====================")
+            print("Offline DB Connected")
+            print("====================")
+        except Exception as e:
+            print(e)
+            # show_alert_dialog("No connection!")
+            cur = ""
+            con = ""
+            print("===================")
+            print("====== Error ======")
+            print("===================")
+
 
     return cur, con
 
@@ -116,3 +145,5 @@ def location_covid_checker(location):
 
 def identity_covid_checker(identity):
     pass
+
+db_connector()
