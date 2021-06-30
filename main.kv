@@ -1,4 +1,3 @@
-screen_helper = """
 <ContentNavigationDrawer>:
     orientation: "vertical"
     padding: "8dp"
@@ -95,12 +94,17 @@ ScreenManager:
             app.anim_home(register_btn)
             app.anim_home(login_btn)
 
-        orientation: 'horizontal'
+            orientation: 'horizontal'
         canvas.before:
             Rectangle:
                 pos: self.pos
                 size: self.size
-                source: 'bg.jpg'
+                source: 'bg.png'
+
+        FitImage:
+            source: 'bg.png'
+            pos: self.pos
+            size: self.size
 
 
         MDRoundFlatButton:
@@ -108,7 +112,6 @@ ScreenManager:
             text: 'Create an Account'
             pos_hint :  {"center_x": .5, "center_y": .25}
             font_size: 15
-            size_hint_x: .5
             md_bg_color: 1, 1, 1, 1
             line_color: 49/255, 55/255, 253/255, 1
             on_press:
@@ -120,7 +123,6 @@ ScreenManager:
             text: 'Sign In'
             pos_hint :  {"center_x": .5, "center_y": .15}
             font_size: 15
-            size_hint_x: .5
             md_bg_color: 1, 1, 1, 1
             line_color: 49/255, 55/255, 253/255, 1
             on_press:
@@ -207,7 +209,6 @@ ScreenManager:
             MDRaisedButton:
                 text: "Login"
                 pos_hint: {"center_x": .5, "center_y":.2}
-                size_hint_x: .5
                 md_bg_color: 2/255, 117/255, 216/255, 1
                 on_press: app.login_validate()
 
@@ -341,7 +342,6 @@ ScreenManager:
             MDRaisedButton:
                 text: "Register"
                 pos_hint: {"center_x": .5, "center_y":.13}
-                size_hint_x: .5
                 md_bg_color: 2/255, 117/255, 216/255, 1
                 on_press:
                     app.register_validate()
@@ -372,8 +372,8 @@ ScreenManager:
         name: 'main_page'
 
 
-        MDBottomAppBar :
-            MDToolbar :
+        MDBottomAppBar:
+            MDToolbar:
                 id : toolbar
                 title : "COPA"
                 left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
@@ -496,7 +496,6 @@ ScreenManager:
                                 text : "I don't agree"
                                 pos_hint: {"center_x": 0.2, "center_y": 0.5}
                                 font_size: 13
-                                size_hint_x: .5
                                 on_press:
                                     app.cancel_checker()
                                     app.slide_back_out(disclaimer_card)
@@ -506,7 +505,6 @@ ScreenManager:
                                 text : "I agree"
                                 pos_hint: {"center_x": 0.8, "center_y": 0.5}
                                 font_size: 13
-                                size_hint_x: .5
                                 on_press:
                                     app.cancel_checker()
                                     app.slide_out(disclaimer_card)
@@ -557,7 +555,6 @@ ScreenManager:
                             MDRaisedButton:
                                 text: "No"
                                 elevation_normal: 12
-                                size_hint_x: .5
                                 on_press:
                                     app.covid_country('Out of Cameroon')
                                     app.slide_out(country_1_card)
@@ -566,7 +563,6 @@ ScreenManager:
                             MDRaisedButton:
                                 text: "Yes"
                                 elevation_normal: 12
-                                size_hint_x: .5
                                 on_press:
                                     app.covid_country('Cameroon')
                                     app.slide_out(country_1_card)
@@ -676,7 +672,6 @@ ScreenManager:
                                 halign: 'center'
                                 pos_hint: {"center_x": .25, "center_y": .5}
                                 elevation_normal: 12
-                                size_hint_x: .5
                                 on_press:
                                     app.covid_identity("Account Holder")
                                     app.slide_out(is_you_card)
@@ -687,7 +682,6 @@ ScreenManager:
                                 halign: 'center'
                                 pos_hint: {"center_x": .75, "center_y": .5}
                                 elevation_normal: 12
-                                size_hint_x: .5
                                 on_press:
                                     app.covid_identity("Not Account Holder")
                                     app.slide_out(is_you_card)
@@ -776,14 +770,3 @@ ScreenManager:
                 ContentNavigationDrawer:
                     screen_manager: screen_manager
                     nav_drawer: nav_drawer
-
-
-
-
-
-
-
-
-
-
-"""

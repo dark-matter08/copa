@@ -5,7 +5,7 @@ from kivy.lang.builder import Builder
 from kivy.core.window import Window
 from kivy.properties import ObjectProperty, ListProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
-from main_kv import screen_helper
+# from main_kv import screen_helper
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.list import OneLineIconListItem, MDList, IRightBodyTouch, OneLineAvatarIconListItem
 from kivymd.uix.selectioncontrol import MDCheckbox
@@ -57,9 +57,9 @@ class ScreenLayout(BoxLayout):
 class CopaApp(MDApp):
 
     def build(self):
-
-        screen = Builder.load_string(screen_helper)
-        return screen
+        # screen = Builder.load_string(screen_helper)
+        # return screen
+        self.load_kv("main.kv")
 
     def on_start(self):
         global cur, con
@@ -98,7 +98,7 @@ class CopaApp(MDApp):
 
         # widget.remove_widget(error)
         for child in widget.children:
-            print(child.width)
+            # print(child.width)
             if child.width == 346.75:
                 widget.remove_widget(child)
         widget.add_widget(error)
@@ -112,6 +112,8 @@ class CopaApp(MDApp):
         username = self.root.ids.username.text
         password = self.root.ids.password.text
         login_layout = self.root.ids.login_layout
+
+        print(self.root)
 
         if username == "" or password == "":
             self.error_label("Please fill in all fields", login_layout, .2, .27)
@@ -147,7 +149,7 @@ class CopaApp(MDApp):
         reg_c_pass = self.root.ids.reg_c_pass.text
         register_layout = self.root.ids.register_layout
 
-        if full_name == "" or reg_username == "" or reg_email == "" or reg_pass == "" or reg_c_pass:
+        if full_name == "" or reg_username == "" or reg_email == "" or reg_pass == "" or reg_c_pass == "":
             self.error_label("Please fill in all fields", register_layout, .13, .19)
             return
 
