@@ -187,7 +187,7 @@ class CopaApp(MDApp):
         anim.start(widget)
 
     def anim1(self, widget):
-        anim =  Animation(pos_hint={"center_y":.85})
+        anim =  Animation(pos_hint={"center_y":.87})
         anim.start(widget)
 
     def anim_home(self, widget):

@@ -90,11 +90,11 @@ ScreenManager:
     MDScreen:
         id: home
         name: 'home'
+        orientation: 'horizontal'
         on_enter:
             app.anim_home(register_btn)
             app.anim_home(login_btn)
 
-            orientation: 'horizontal'
         canvas.before:
             Rectangle:
                 pos: self.pos
@@ -111,6 +111,9 @@ ScreenManager:
             id: register_btn
             text: 'Create an Account'
             pos_hint :  {"center_x": .5, "center_y": .25}
+            size_hint: None, None
+            -width: root.width - dp(80)
+            -height: dp(42)
             font_size: 15
             md_bg_color: 1, 1, 1, 1
             line_color: 49/255, 55/255, 253/255, 1
@@ -122,6 +125,9 @@ ScreenManager:
             id: login_btn
             text: 'Sign In'
             pos_hint :  {"center_x": .5, "center_y": .15}
+            size_hint: None, None
+            -width: root.width - dp(80)
+            -height: dp(45)
             font_size: 15
             md_bg_color: 1, 1, 1, 1
             line_color: 49/255, 55/255, 253/255, 1
@@ -245,7 +251,7 @@ ScreenManager:
             id: register_layout
             MDFloatLayout:
                 id: back
-                size_hint_y: .6
+                size_hint_y: .60
                 pos_hint: {"center_y": 1.8}
                 radius: [0, 0, 0, 70]
                 canvas:
@@ -258,8 +264,9 @@ ScreenManager:
             MDFloatLayout:
                 id: back1
                 size_hint_y: .3
-                pos_hint: {"center_y": 1.8}
-                radius: [0, 0, 0, 70]
+                size_hint_x: 1
+                pos_hint: {"center_x": .5, "center_y": 1.8}
+                radius: [0, 0, 100, 100]
                 canvas:
                     Color:
                         rgb: (2/255, 117/255, 216/255, 1)
